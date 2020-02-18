@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "./navigation_bar.html" %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Domain: {{ domain.name }}</title>
+</head>
+
+<body>
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'openjuice/style.css' %}">
+
+<ul>
+<h1>{{ domain.name }}</h1>
+    {% for topic in domain.topics.all %}
+        <li><a href="{% url 'openjuice:topic' topic.code %}">{{ topic.name }}</a></li>
+    {% endfor %}
+</ul>
+
+</body>
+{% endblock %}
+</html>

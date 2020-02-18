@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Domains</title>
+</head>
+<body>
+{% extends "./navigation_bar.html" %}
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'openjuice/style.css' %}">
+{% if domain_list %}
+    <ul>
+    {% for domain in domain_list %}
+        <li><a href="{% url 'openjuice:domain' domain.code %}">{{ domain.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No domains are available.</p>
+{% endif %}
+
+{% endblock %}
+</body>
+</html>

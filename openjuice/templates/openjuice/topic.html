@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "./navigation_bar.html" %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Topic: {{ topic.name }}</title>
+</head>
+
+<body>
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'openjuice/style.css' %}">
+
+<h1>{{ topic.name }}</h1>
+
+<h4>Overview</h4>
+<p>{{ topic.overview }}</p>
+
+<h4>Educational Resources</h4>
+<h5>Book Resources</h5>
+{% for book_rsrc in topic.bookresource_set.all %}
+<li><A target="_blank" href="{{ book_rsrc.source }}">{{ book_rsrc.title }}</A></li>
+{% endfor %}
+
+<h4>Tools, Platforms and Environments</h4>
+<p>Tools go here...</p>
+
+<h4>Milestone Projects</h4>
+<p>Projects go here...</p>
+
+<h4>Discussions</h4>
+<p>Discussions go here...</p>
+
+</body>
+{% endblock %}
+</html>

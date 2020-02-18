@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+{% extends "./navigation_bar.html" %}
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'openjuice/style.css' %}">
+
+<h1>Welcome home!</h1>
+
+<p>OpenJuice is a place where users of varying levels of experience come to learn about
+    various topics in Computer Science and IT.<br><br>
+
+    We want to help you learn as much as you can using free
+    material, resources and development tools.<br> OpenJuice is a community-run platform, where anybody can
+    link resources and useful tools.
+</p>
+
+{% endblock %}
+</body>
+</html>
