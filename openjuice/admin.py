@@ -6,4 +6,7 @@ admin.site.register(Choice)
 admin.site.register(Domain)
 admin.site.register(Topic)
 admin.site.register(BookResource)
+admin.site.register(CourseResource)
+admin.site.register(Tool)
+
 

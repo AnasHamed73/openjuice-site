@@ -19,13 +19,23 @@
 <p>{{ topic.overview }}</p>
 
 <h4>Educational Resources</h4>
-<h5>Book Resources</h5>
+{% if topic.bookresource_set.all %} <h5>Books</h5> {% endif %}
 {% for book_rsrc in topic.bookresource_set.all %}
 <li><A target="_blank" href="{{ book_rsrc.source }}">{{ book_rsrc.title }}</A></li>
 {% endfor %}
 
-<h4>Tools, Platforms and Environments</h4>
-<p>Tools go here...</p>
+{% if topic.courseresource_set.all %} <h5>Courses</h5> {% endif %}
+
+{% for course_rsrc in topic.courseresource_set.all %}
+<li><A target="_blank" href="{{ course_rsrc.source }}">{{ course_rsrc.title }}</A> - {{ course_rsrc.organization }}</li>
+{% endfor %}
+
+
+{% if topic.tool_set.all %} <h4>Tools, Platforms and Environments</h4> {% endif %}
+
+{% for tool in topic.tool_set.all %}
+<li><A target="_blank" href="{{ tool.source }}">{{ tool.name }}</A> - {{ tool.description }}</li>
+{% endfor %}
 
 <h4>Milestone Projects</h4>
 <p>Projects go here...</p>

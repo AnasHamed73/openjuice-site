@@ -24,10 +24,29 @@ class BookResource(models.Model):
     source = models.URLField()
     title = models.CharField(max_length=200, unique=False)
     author = models.CharField(max_length=200, unique=False)
-    year = models.IntegerField(unique=False)
+    year = models.IntegerField(unique=False, null=True, blank=True)
 
     class Meta:
         unique_together = ('title', 'author',)
+
+
+class CourseResource(models.Model):
+    topics = models.ManyToManyField(Topic)
+    source = models.URLField()
+    title = models.CharField(max_length=200, unique=False)
+    organization = models.CharField(max_length=200, unique=False)
+    year = models.IntegerField(unique=False)
+
+    class Meta:
+        unique_together = ('title', 'organization',)
+
+
+class Tool(models.Model):
+    topics = models.ManyToManyField(Topic)
+    source = models.URLField()
+    name = models.CharField(max_length=200, unique=False)
+    type = models.CharField(max_length=200, unique=False)
+    description = models.TextField(max_length=500, null=False, blank=False)
 
 
 class Question(models.Model):
