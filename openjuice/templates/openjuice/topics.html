@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+{% extends "./navigation_bar.html" %}
+{% block content %}
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>All Topics</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'openjuice/css/style.css' %}">
 </head>
 <body>
-{% extends "./navigation_bar.html" %}
-{% block content %}
 
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'openjuice/style.css' %}">
+
 {% if topic_list %}
     <ul>
     {% for topic in topic_list %}

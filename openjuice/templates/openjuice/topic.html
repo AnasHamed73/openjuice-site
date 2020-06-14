@@ -2,47 +2,49 @@
 <html lang="en">
 {% extends "./navigation_bar.html" %}
 {% block content %}
-
+{% load static %}
 <head>
-    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'openjuice/css/style.css' %}">
     <title>Topic: {{ topic.name }}</title>
 </head>
 
 <body>
+<div class="container">
+    <h1>{{ topic.name }}</h1>
 
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'openjuice/style.css' %}">
+    <h4>Overview</h4>
+    <p>{{ topic.overview }}</p>
 
-<h1>{{ topic.name }}</h1>
+    <h4>Educational Resources</h4>
+    {% if topic.bookresource_set.all %} <h5>Books</h5> {% endif %}
+    <ul>
+      {% for book_rsrc in topic.bookresource_set.all %}
+        <li><A target="_blank" href="{{ book_rsrc.source }}">{{ book_rsrc.title }}</A></li>
+      {% endfor %}
+    </ul>
 
-<h4>Overview</h4>
-<p>{{ topic.overview }}</p>
+    {% if topic.courseresource_set.all %} <h5>Courses</h5> {% endif %}
+    <ul>
+      {% for course_rsrc in topic.courseresource_set.all %}
+      <li><A target="_blank" href="{{ course_rsrc.source }}">{{ course_rsrc.title }}</A> - {{ course_rsrc.organization }}
+      </li>
+      {% endfor %}
+    </ul>
 
-<h4>Educational Resources</h4>
-{% if topic.bookresource_set.all %} <h5>Books</h5> {% endif %}
-{% for book_rsrc in topic.bookresource_set.all %}
-<li><A target="_blank" href="{{ book_rsrc.source }}">{{ book_rsrc.title }}</A></li>
-{% endfor %}
+    {% if topic.tool_set.all %} <h4>Tools, Platforms and Environments</h4> {% endif %}
 
-{% if topic.courseresource_set.all %} <h5>Courses</h5> {% endif %}
+    <ul>
+      {% for tool in topic.tool_set.all %}
+      <li><A target="_blank" href="{{ tool.source }}">{{ tool.name }}</A> - {{ tool.description }}</li>
+      {% endfor %}
+    </ul>
 
-{% for course_rsrc in topic.courseresource_set.all %}
-<li><A target="_blank" href="{{ course_rsrc.source }}">{{ course_rsrc.title }}</A> - {{ course_rsrc.organization }}</li>
-{% endfor %}
+    <h4>Milestone Projects</h4>
+    <p>Projects go here...</p>
 
-
-{% if topic.tool_set.all %} <h4>Tools, Platforms and Environments</h4> {% endif %}
-
-{% for tool in topic.tool_set.all %}
-<li><A target="_blank" href="{{ tool.source }}">{{ tool.name }}</A> - {{ tool.description }}</li>
-{% endfor %}
-
-<h4>Milestone Projects</h4>
-<p>Projects go here...</p>
-
-<h4>Discussions</h4>
-<p>Discussions go here...</p>
-
+    <h4>Discussions</h4>
+    <p>Discussions go here...</p>
+</div>
 </body>
 {% endblock %}
 </html>

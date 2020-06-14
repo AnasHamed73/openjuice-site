@@ -1,26 +1,29 @@
-
 <!DOCTYPE html>
 <html lang="en">
+{% extends "./navigation_bar.html" %}
+{% block content %}
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>Domains</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'openjuice/css/style.css' %}">
 </head>
 <body>
-{% extends "./navigation_bar.html" %}
-{% block content %}
 
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'openjuice/style.css' %}">
-{% if domain_list %}
+
+<div class="container">
+    {% if domain_list %}
+    <h2>Domains</h2>
     <ul>
-    {% for domain in domain_list %}
+        {% for domain in domain_list %}
         <li><a href="{% url 'openjuice:domain' domain.code %}">{{ domain.name }}</a></li>
-    {% endfor %}
+        {% endfor %}
     </ul>
-{% else %}
+    {% else %}
     <p>No domains are available.</p>
-{% endif %}
-
+    {% endif %}
+</div>
 {% endblock %}
+
 </body>
 </html>

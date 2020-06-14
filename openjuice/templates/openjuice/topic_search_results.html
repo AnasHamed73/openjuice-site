@@ -3,14 +3,14 @@
 
 {% extends "./navigation_bar.html" %}
 {% block content %}
+{% load static %}
 
 <head>
     <meta charset="UTF-8">
     <title>Search results</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'openjuice/css/style.css' %}">
 </head>
 <body>
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'openjuice/style.css' %}">
 
 <h3>Search results</h3>
 

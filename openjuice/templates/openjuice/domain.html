@@ -2,16 +2,16 @@
 <html lang="en">
 {% extends "./navigation_bar.html" %}
 {% block content %}
-
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>Domain: {{ domain.name }}</title>
+<link rel="stylesheet" type="text/css" href="{% static 'openjuice/css/style.css' %}">
 </head>
 
 <body>
 
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'openjuice/style.css' %}">
+
 
 <ul>
 <h1>{{ domain.name }}</h1>
