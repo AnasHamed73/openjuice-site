@@ -12,13 +12,15 @@
 </head>
 <body>
 
-<h3>Search results</h3>
+<div class="container">
+    <h3>Search results</h3>
 
-{% if not topics %}<p><strong>{{ not_found_message }}</strong></p>{% endif %}
+    {% if not topics %}<p><strong>{{ not_found_message }}</strong></p>{% endif %}
 
-{% for topic in topics %}
+    {% for topic in topics %}
     <li><a href="{% url 'openjuice:topic' topic.code %}">{{ topic.name }}</a></li>
-{% endfor %}
+    {% endfor %}
+</div>
 </body>
 {% endblock %}
 </html>
